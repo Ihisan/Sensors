@@ -21,8 +21,8 @@ def get_Sensors():
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         response = {
-            'main_door_1' : get_all_by_sensorname('main_door_1'),
-            'main_door_2' : get_all_by_sensorname('main_door_2')
+            'main_door_1': get_all_by_sensorname('main_door_1'),
+            'main_door_2': get_all_by_sensorname('main_door_2')
              
         }
  
@@ -33,7 +33,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(response)
 
 def run():
-    httpd = HTTPServer(('localhost', 8080), SimpleHTTPRequestHandler)
+    httpd = HTTPServer(('localhost', 3001), SimpleHTTPRequestHandler)
     httpd.serve_forever();
 
 if __name__ == '__main__':

@@ -1,0 +1,86 @@
+{
+  "configurations": [
+    {
+      "name": "Python: FastAPI",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["main:app"],
+      "jinja": true
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "Invoke Lambda",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "Template Location",
+        "logicalId": "Function Logical ID"
+      },
+      "lambda": {
+        "payload": {
+          "json": {}
+        }
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "Sensors:src/App.App (nodejs10.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "my-app",
+        "lambdaHandler": "src/App.App"
+      },
+      "lambda": {
+        "runtime": "nodejs10.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "Invoke Lambda",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "Template Location",
+        "logicalId": "Function Logical ID"
+      },
+      "lambda": {
+        "payload": {
+          "json": {}
+        }
+      }
+    },
+    {
+      "name": "Attach to Edge",
+      "port": 9222,
+      "request": "attach",
+      "type": "pwa-msedge",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "Sensors:src/App.App (nodejs14.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "my-app",
+        "lambdaHandler": "src/App.App"
+      },
+      "lambda": {
+        "runtime": "nodejs14.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    }
+  ]
+}
